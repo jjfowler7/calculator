@@ -2,7 +2,6 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     border-radius: 10px;
     color: #e5e5e5;
-    
 }
 
 body {
@@ -16,7 +15,7 @@ body {
     justify-content: center;
 }
 
-#display{
+#display {
     height: 75px;
     width: 315px;
     background-color: rgb(190, 220, 238);
@@ -30,10 +29,9 @@ body {
     flex-direction: column;
     justify-content: space-around;
     height: 500px;
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
     background-color: rgb(121, 119, 119);
     padding: 25px;
-    
 }
 
 #keys {
@@ -49,20 +47,32 @@ button {
     width: 75px;
     height: 75px;
     align-self: center;
-    border: 1px solid #e5e5e5;;
+    border: 1px solid #e5e5e5;
 }
 
-.digits{
+button:active {
+    transform: translateY(1px);
+    filter: brightness(115%);
+}
+
+.digits {
     background-color: #14213d;
-    
 }
 
-.operator{
+.digits:active {
+    filter: brightness(150%);
+}
+
+.operator {
     background-color: #fca311;
     color: white;
 }
 
-.clear{
-    background-color: black;
+.clear {
+    background-color: rgb(20, 20, 20);
     color: white;
+}
+
+.clear:active {
+    filter: brightness(200%);
 }
