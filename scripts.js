@@ -1,5 +1,7 @@
 'use strict';
 
+let equation = [];
+
 function add(operand1, operand2) {
     return operand1 + operand2;
 };
@@ -19,14 +21,14 @@ function divide(operand1, operand2) {
 
 function operate(operator, operand1, operand2) {
     switch (operator) {
-        case 'add':
-            return add(operand1, operand2);
-        case 'subtract':
-            return subtract(operand1, operand2);
-        case 'multiply':
-            return multiply(operand1, operand2);
-        case 'divide':
-            return divide(operand1, operand2);
+        case '+':
+            return add(+operand1, +operand2);
+        case '-':
+            return subtract(+operand1, +operand2);
+        case '*':
+            return multiply(+operand1, +operand2);
+        case '/':
+            return divide(+operand1, +operand2);
         default:
         // do nothing
     };
@@ -35,6 +37,7 @@ function operate(operator, operand1, operand2) {
 const digits = document.querySelectorAll('.digits');
 const display = document.getElementById('display');
 const clear = document.querySelector('.clear');
+const equals = document.querySelector('.equals');
 const operator = document.querySelectorAll('.operator');
 
 digits.forEach((digits) => {
@@ -46,10 +49,15 @@ digits.forEach((digits) => {
 operator.forEach((operator) => {
     operator.addEventListener('click', () => {
         display.value += ` ${operator.innerHTML} `
+        equation = display.value.split(" ")
     });
+});
+
+equals.addEventListener('click', () => {
+    equation = display.value.split(" ")
+    display.value = operate(equation[1], equation[0], equation[2]);
 });
 
 clear.addEventListener('click', () => {
     display.value = "";
 });
-
