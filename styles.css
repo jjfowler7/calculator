@@ -55,11 +55,11 @@ button:active {
     filter: brightness(115%);
 }
 
-.digits {
+.digits, .equals {
     background-color: #14213d;
 }
 
-.digits:active {
+.digits:active, .equals:active {
     filter: brightness(150%);
 }
 
