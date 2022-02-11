@@ -42,6 +42,10 @@ const operator = document.querySelectorAll('.operator');
 
 digits.forEach((digits) => {
     digits.addEventListener('click', () => {
+        if(equation[0] === '='){
+            display.value = "";
+        }
+
         display.value += digits.innerHTML;
     });
 });
@@ -50,12 +54,24 @@ operator.forEach((operator) => {
     operator.addEventListener('click', () => {
         display.value += ` ${operator.innerHTML} `
         equation = display.value.split(" ")
+        console.log(equation);
+
+        if(equation.length >= 5) {
+            display.value = operate(equation[1], equation[0], equation[2]) + ` ${equation[3]} `;
+        };
+
     });
 });
 
 equals.addEventListener('click', () => {
     equation = display.value.split(" ")
-    display.value = operate(equation[1], equation[0], equation[2]);
+    console.log(equation);
+    if(equation.length >= 3){
+        display.value = operate(equation[1], equation[0], equation[2]);
+        equation = [];
+        equation.unshift('=');
+        console.log(equation);
+    }    
 });
 
 clear.addEventListener('click', () => {
