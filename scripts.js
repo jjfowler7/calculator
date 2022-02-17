@@ -1,22 +1,23 @@
 'use strict';
 
 let equation = [];
+let check = false;
 
 function add(operand1, operand2) {
-    return operand1 + operand2;
+    return +(Math.round((operand1 + operand2) + "e+2") + "e-2");
 };
 
 function subtract(operand1, operand2) {
-    return operand1 - operand2;
+    return +(Math.round((operand1 - operand2) + "e+2") + "e-2");
 };
 
 function multiply(operand1, operand2) {
-    return operand1 * operand2;
+    return +(Math.round((operand1 * operand2) + "e+2") + "e-2");
 };
 
 function divide(operand1, operand2) {
     if (operand2 === 0) return 'Undefined';
-    return operand1 / operand2;
+    return +(Math.round((operand1 / operand2) + "e+2") + "e-2");
 };
 
 function operate(operator, operand1, operand2) {
@@ -42,10 +43,10 @@ const operator = document.querySelectorAll('.operator');
 
 digits.forEach((digits) => {
     digits.addEventListener('click', () => {
-        if(equation[0] === '='){
+        if (check === true) {
             display.value = "";
         }
-
+        check = false;
         display.value += digits.innerHTML;
     });
 });
@@ -56,7 +57,7 @@ operator.forEach((operator) => {
         equation = display.value.split(" ")
         console.log(equation);
 
-        if(equation.length >= 5) {
+        if (equation.length >= 5) {
             display.value = operate(equation[1], equation[0], equation[2]) + ` ${equation[3]} `;
         };
 
@@ -66,12 +67,12 @@ operator.forEach((operator) => {
 equals.addEventListener('click', () => {
     equation = display.value.split(" ")
     console.log(equation);
-    if(equation.length >= 3){
+    if (equation.length >= 3) {
         display.value = operate(equation[1], equation[0], equation[2]);
         equation = [];
-        equation.unshift('=');
+        check = true;
         console.log(equation);
-    }    
+    }
 });
 
 clear.addEventListener('click', () => {
