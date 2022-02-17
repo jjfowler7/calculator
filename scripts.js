@@ -55,6 +55,7 @@ operator.forEach((operator) => {
     operator.addEventListener('click', () => {
         display.value += ` ${operator.innerHTML} `
         equation = display.value.split(" ")
+        check = false;
         console.log(equation);
 
         if (equation.length >= 5) {
